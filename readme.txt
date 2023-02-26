@@ -4,6 +4,8 @@ Skillbox_Bunin_AV_bot - бот, для поиска информации о пр
                          sqlite3
                          requests
                          json
+                         os
+                         getenv
 
 
 Команды:

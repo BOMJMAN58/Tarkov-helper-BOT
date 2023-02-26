@@ -1,5 +1,9 @@
 import requests
 import json
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
 
 
 def request(item: str) -> dict:
@@ -10,7 +14,7 @@ def request(item: str) -> dict:
     """
     url = f"https://tarkov-market.com/api/v1/item?q={item}&lang=ru"
     headers = {
-        "x-api-key": "GmHPhQmFIn1UKUNA"
+        "x-api-key": os.getenv('API')
     }
     response = requests.get(url, headers=headers)
 

@@ -3,8 +3,12 @@ import telebot
 import config
 import tarkov
 from db import SQLighter
+import os
+from dotenv import load_dotenv
 
-bot = telebot.TeleBot(config.token)
+
+load_dotenv()
+bot = telebot.TeleBot(os.getenv("token"))
 
 
 @bot.message_handler(commands=["start"])
