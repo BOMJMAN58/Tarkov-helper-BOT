@@ -6,6 +6,7 @@ class SQLighter:
     def __init__(self, db):
         self.connection = sqlite3.connect(db)
         self.cursor = self.connection.cursor()
+        self.cursor.execute("""CREATE TABLE IF NOT EXISTS log (id_user TEXT NOT NULL, event TEXT NOT NULL)""")
 
     def select_all(self, id):
         """ Получаем все строки пользователя"""
@@ -24,5 +25,4 @@ class SQLighter:
 
     def close(self):
         """ Закрываем текущее соединение с БД """
-
         self.connection.close()

@@ -3,7 +3,12 @@ import json
 
 
 def request(item: str) -> dict:
-    url = f"https://tarkov-market.com/api/v1/item?q={item}&"
+    """
+    Поиск по названию предмета
+    :param item:
+    :return: data_dict
+    """
+    url = f"https://tarkov-market.com/api/v1/item?q={item}&lang=ru"
     headers = {
         "x-api-key": "GmHPhQmFIn1UKUNA"
     }
@@ -32,5 +37,31 @@ def request(item: str) -> dict:
     return data_dict
 
 
+def request_2() -> list:
+    """
+    Поиск самого дорогого предмета
+    :return: maxx
+    """
+    url = f"https://tarkov-market.com/api/v1/items/all"
+    headers = {
+        "x-api-key": "GmHPhQmFIn1UKUNA"
+    }
+    response = requests.get(url, headers=headers)
+
+    data = json.loads(response.text)
+
+    with open("answer1.json", 'w') as file:
+        json.dump(data, file, indent=4)
+    e = []
+    for elem in data:
+        item = [elem.get('shortName'), int(elem.get('price', None))]
+        e.append(item)
+    maxx = ['', 0]
+    for elem in e:
+        if maxx[1] < elem[1]:
+            maxx = elem
+    return maxx
+
+
 if __name__ == '__main__':
-    print("Ты хули тут забыл? ")
+    print("Как вы тут оказались?")

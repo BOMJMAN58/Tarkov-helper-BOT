@@ -1,7 +1,9 @@
-Skillbox_Bunin_AV_bot
+Skillbox_Bunin_AV_bot - бот, для поиска информации о предметах игры escape from tarkov.
 
-Используемые библиотеки: telebot(В терминале: pip install pytelegtambotAPI)
+Используемые библиотеки: telebot(pip install pytelegtambotAPI)
                          sqlite3
+                         requests
+                         json
 
 
 Команды:
@@ -11,5 +13,7 @@ Skillbox_Bunin_AV_bot
     /clearHistory - очистка истории
     /start - Введение
     /help
+    /giveMax - самый дорогой предмет
 
-Запуск бота производится запуском main.py
+Запуск бота производится запуском main.py, база данных создаётся в репозитории и имеет одну таблицу для истории запросов
+пользователей
