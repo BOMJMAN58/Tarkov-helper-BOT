@@ -20,9 +20,6 @@ def request(item: str) -> dict:
 
     data = json.loads(response.text)
 
-    with open("answer.json", 'w') as file:
-        json.dump(data, file, indent=4)
-
     data_dict = data[0]
     [data_dict.pop(key) for key in ["uid", "bannedOnFlea", "name", "tags", "basePrice", "traderPriceRub", "diff24h",
                                     "diff7days", "img", "imgBig", "bsgId", "link", "isFunctional", "reference"]]
@@ -54,8 +51,6 @@ def request_2() -> list:
 
     data = json.loads(response.text)
 
-    with open("answer1.json", 'w') as file:
-        json.dump(data, file, indent=4)
     e = []
     for elem in data:
         item = [elem.get('shortName'), int(elem.get('price', None))]
